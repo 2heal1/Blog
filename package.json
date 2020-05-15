@@ -9,11 +9,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "build": "vuepress build docs",
+    "deploy": "bash deploy.sh"
   },
   "author": "heal",
   "license": "ISC",
   "dependencies": {
-    "element-ui": "^2.13.1"
+    "echarts": "^4.7.0",
+    "element-ui": "^2.13.1",
+    "v-charts": "^1.19.0"
   }
 }
