@@ -1,11 +1,19 @@
 <template>
-  <ve-pie :data="chartData" style="top: 80px;"></ve-pie>
+  <component
+    v-if="dynamicComponent"
+    :is="dynamicComponent"
+    :data="chartData"
+    style="top: 80px;"
+  ></component>
+  <!-- <ve-pie :data="chartData" style="top: 80px;"></ve-pie> -->
 </template>
 
 <script>
+import Vue from "vue";
 export default {
   data() {
     return {
+      dynamicComponent: null,
       chartData: {
         columns: ["状态", "题目数量"],
         rows: [
@@ -14,6 +22,11 @@ export default {
         ],
       },
     };
+  },
+  created() {
+    import("v-charts").then((module) => {
+      this.dynamicComponent = module.default.VePie;
+    });
   },
 };
 </script>

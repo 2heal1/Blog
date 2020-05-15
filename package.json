@@ -17,6 +17,7 @@
   "dependencies": {
     "echarts": "^4.7.0",
     "element-ui": "^2.13.1",
-    "v-charts": "^1.19.0"
+    "v-charts": "^1.19.0",
+    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.0.32"
   }
 }
