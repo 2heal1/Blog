@@ -10,10 +10,12 @@ module.exports = {
         path: "/algorithm/",
         collapsable: false,
         children: [
+          "/algorithm/2020-05-11",
           "/algorithm/2020-05-12",
           "/algorithm/2020-05-13",
           "/algorithm/2020-05-14",
           "/algorithm/2020-05-15",
+          "/algorithm/2020-05-16",
         ],
       },
       {
