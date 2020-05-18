@@ -11,19 +11,19 @@
 <script>
 import Vue from "vue";
 export default {
-  data() {
+  data () {
     return {
       dynamicComponent: null,
       chartData: {
         columns: ["状态", "题目数量"],
         rows: [
-          { 状态: "已解答", 题目数量: 103 },
+          { 状态: "已解答", 题目数量: 106 },
           { 状态: "未解答", 题目数量: 1540 },
         ],
       },
     };
   },
-  created() {
+  created () {
     import("v-charts").then((module) => {
       this.dynamicComponent = module.default.VePie;
     });
