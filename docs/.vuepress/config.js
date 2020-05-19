@@ -6,7 +6,7 @@ module.exports = {
     sidebar: [
       ["/about", "介绍"],
       {
-        title: "算法",
+        title: "LeetCode题解",
         path: "/algorithm/",
         collapsable: false,
         children: [
@@ -22,10 +22,38 @@ module.exports = {
         ],
       },
       {
+        title: "面试常见代码题",
+        path: "/interviewCoding/",
+        collapsable: false,
+        children: [
+          "/interviewCoding/深拷贝",
+          "/interviewCoding/数组对象去重",
+          "/interviewCoding/背包问题",
+          "/interviewCoding/二分查找",
+          "/interviewCoding/扁平化",
+          "/interviewCoding/柯里化函数",
+          "/interviewCoding/排序算法",
+          "/interviewCoding/驼峰下划线转换",
+          "/interviewCoding/序列化与反序列化",
+          "/interviewCoding/防抖节流",
+          "/interviewCoding/改变this指向",
+          "/interviewCoding/Object.create",
+          "/interviewCoding/promise",
+          "/interviewCoding/Promise.all",
+          "/interviewCoding/promise化ajax",
+          "/interviewCoding/reduce",
+          "/interviewCoding/发布订阅者模式",
+          "/interviewCoding/手写Event类",
+          "/interviewCoding/jsonp",
+          "/interviewCoding/for-of对象",
+          "/interviewCoding/三栏布局",
+        ],
+      },
+      {
         title: "JavaScript",
         path: "/javaScript/",
         collapsable: false,
-        children: ["/javaScript/new的实现"],
+        children: ["/javaScript/new的实现", "/javaScript/instanceof原理"],
       },
       {
         title: "春招面试",
