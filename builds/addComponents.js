@@ -6,9 +6,13 @@ findMarkdown(rootDir, writeComponents);
 
 function writeComponents(dir) {
   if (!/README/.test(dir)) {
-    fs.appendFile(dir, `\n \n <comment-comment/> \n `, (err) => {
-      if (err) throw err;
-      console.log(`add components to ${dir}`);
-    });
+    fs.appendFile(
+      dir,
+      `\n \n<ClientOnly> <comment/> </ClientOnly> \n `,
+      (err) => {
+        if (err) throw err;
+        console.log(`add components to ${dir}`);
+      }
+    );
   }
 }
