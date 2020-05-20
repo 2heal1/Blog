@@ -19,6 +19,7 @@ module.exports = {
           "/algorithm/2020-05-17",
           "/algorithm/2020-05-18",
           "/algorithm/2020-05-19",
+          "/algorithm/2020-05-20",
         ],
       },
       {
