@@ -43,7 +43,6 @@ module.exports = {
             path: "/algorithm/2020-06/",
             collapsable: true,
             children: [
-              "/algorithm/2020-06/2020-05-11",
               "/algorithm/2020-06/2020-06-01",
               "/algorithm/2020-06/2020-06-02",
               "/algorithm/2020-06/2020-06-03",
@@ -53,6 +52,7 @@ module.exports = {
               "/algorithm/2020-06/2020-06-07",
               "/algorithm/2020-06/2020-06-08",
               "/algorithm/2020-06/2020-06-09",
+              "/algorithm/2020-06/2020-06-10",
             ],
           },
         ],
