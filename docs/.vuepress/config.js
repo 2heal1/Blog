@@ -75,6 +75,12 @@ module.exports = {
               "/algorithm/2020-06/2020-06-30",
             ],
           },
+          {
+            title: "2020-07",
+            path: "/algorithm/2020-07/",
+            collapsable: true,
+            children: ["/algorithm/2020-07/2020-07-01"],
+          },
         ],
       },
       {
