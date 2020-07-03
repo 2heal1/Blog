@@ -82,6 +82,7 @@ module.exports = {
             children: [
               "/algorithm/2020-07/2020-07-01",
               "/algorithm/2020-07/2020-07-02",
+              "/algorithm/2020-07/2020-07-03",
             ],
           },
         ],
