@@ -6,6 +6,12 @@ module.exports = {
     sidebar: [
       ["/about", "介绍"],
       {
+        title: "工作",
+        path: "/work/",
+        collapsable: false,
+        children: ["/work/入职"],
+      },
+      {
         title: "LeetCode题解",
         path: "/algorithm/",
         collapsable: false,
@@ -99,6 +105,7 @@ module.exports = {
               "/algorithm/2020-07/2020-07-17",
               "/algorithm/2020-07/2020-07-18",
               "/algorithm/2020-07/2020-07-19",
+              "/algorithm/2020-07/2020-07-20",
             ],
           },
         ],
