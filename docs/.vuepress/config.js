@@ -9,7 +9,7 @@ module.exports = {
         title: "工作",
         path: "/work/",
         collapsable: false,
-        children: ["/work/入职", "/work/nest里的单元测试"],
+        children: ["/work/入职", "/work/nest里的单元测试","/work/single-spa"],
       },
       {
         title: "LeetCode题解",
