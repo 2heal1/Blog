@@ -9,7 +9,12 @@ module.exports = {
         title: "工作",
         path: "/work/",
         collapsable: false,
-        children: ["/work/入职", "/work/nest里的单元测试","/work/single-spa"],
+        children: [
+          "/work/入职",
+          "/work/nest里的单元测试",
+          "/work/single-spa",
+          "/work/qiankun特性源码分析"
+        ]
       },
       {
         title: "LeetCode题解",
@@ -41,8 +46,8 @@ module.exports = {
               "/algorithm/2020-05/2020-05-28",
               "/algorithm/2020-05/2020-05-29",
               "/algorithm/2020-05/2020-05-30",
-              "/algorithm/2020-05/2020-05-31",
-            ],
+              "/algorithm/2020-05/2020-05-31"
+            ]
           },
           {
             title: "2020-06",
@@ -78,8 +83,8 @@ module.exports = {
               "/algorithm/2020-06/2020-06-27",
               "/algorithm/2020-06/2020-06-28",
               "/algorithm/2020-06/2020-06-29",
-              "/algorithm/2020-06/2020-06-30",
-            ],
+              "/algorithm/2020-06/2020-06-30"
+            ]
           },
           {
             title: "2020-07",
@@ -105,10 +110,10 @@ module.exports = {
               "/algorithm/2020-07/2020-07-17",
               "/algorithm/2020-07/2020-07-18",
               "/algorithm/2020-07/2020-07-19",
-              "/algorithm/2020-07/2020-07-20",
-            ],
-          },
-        ],
+              "/algorithm/2020-07/2020-07-20"
+            ]
+          }
+        ]
       },
       {
         title: "面试常见代码题",
@@ -137,9 +142,9 @@ module.exports = {
           "/interviewCoding/for-of对象",
           "/interviewCoding/三栏布局",
           "/interviewCoding/new的实现",
-          "/interviewCoding/instanceof原理",
-        ],
-      },
+          "/interviewCoding/instanceof原理"
+        ]
+      }
       // {
       //   title: "春招面试",
       //   path: "/interview/",
@@ -157,6 +162,6 @@ module.exports = {
       //     "/interview/字节跳动抖音短视频",
       //   ],
       // },
-    ],
-  },
+    ]
+  }
 };
