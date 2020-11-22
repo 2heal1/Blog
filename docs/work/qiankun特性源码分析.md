@@ -79,7 +79,7 @@ const { bootstrap, mount, unmount, update } = getLifecyclesFromExports(
 ## JS 沙箱
 
 先看一下官方的 JS 沙箱简单架构图
-![JS 沙箱简单架构图](../assest/js-quarantine.png)
+![JS 沙箱简单架构图](../assest/js-quarantine.jpg)
 在应用的 bootstrap 及 mount 两个生命周期开始之前分别给全局状态打下快照，然后当应用切出/卸载时，将状态回滚至 bootstrap 开始之前的阶段，确保应用对全局状态的污染全部清零。而当应用二次进入时则再恢复至 mount 前的状态的，从而确保应用在 remount 时拥有跟第一次 mount 时一致的全局上下文。
 
 看下源码是如何实现的。
@@ -266,7 +266,8 @@ export default class ProxySandbox implements SandBox {
 }
 ```
 
-然后看下 ProxySandbox 是如何实现沙箱运行环境的
+然后看下 ProxySandbox 是如何实现沙箱运行环境
+
 todo
 
 ## 资源预加载
