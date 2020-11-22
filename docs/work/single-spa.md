@@ -51,7 +51,7 @@ title: single-spa浅析
 - NOT_LOADED：注册未加载
 - LOADING_SOURCE_CODE：正在加载微应用源码
 - NOT_BOOTSTRAPPED：已加载，未启动
-- BOOTSTRAPPING：正在启动，生命周期重的 boostrap 只执行一次
+- BOOTSTRAPPING：正在启动，生命周期中的 boostrap 只执行一次
 - NOT_MOUNTED：已启动，未挂载
 - MOUNTING：挂载中，处于生命周期中 mount 时期
 - MOUNTED：已挂载
