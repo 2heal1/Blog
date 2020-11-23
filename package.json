@@ -15,10 +15,12 @@
   "author": "heal",
   "license": "ISC",
   "dependencies": {
+    "vuepress": "^1.2.0",
     "echarts": "^4.7.0",
     "element-ui": "^2.13.1",
     "v-charts": "^1.19.0",
     "babel-runtime": "^6.26.0",
-    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.0.32"
+    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.0.32",
+    "vuepress-plugin-sitemap": "^2.3.1"
   }
 }
