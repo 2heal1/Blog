@@ -163,5 +163,10 @@ module.exports = {
       //   ],
       // },
     ]
-  }
+  },
+  plugins: {
+    'sitemap': {
+        hostname: 'https://2heal1.github.io'
+    },
+}
 };
