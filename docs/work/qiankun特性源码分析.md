@@ -74,7 +74,7 @@ const { bootstrap, mount, unmount, update } = getLifecyclesFromExports(
 </html>
 ```
 
-当子应用被替换或卸载时，subApp 节点的 innerHTML 也会被复写，//alipay.com/subapp.css 也就自然被移除样式也随之卸载了。
+当子应用被替换或卸载时，subApp 节点的 innerHTML 也会被复写，也就自然被移除样式也随之卸载了。
 
 ## JS 沙箱
 
@@ -231,7 +231,7 @@ qiankun 是从 window.Proxy 的 set 和 get 属性来实现沙箱运行环境。
 
 ### ProxySandbox
 
-在 qiankun ProxySandbox 用于多实例场景。什么是多实例场景，这里我简单提下，一般我们的中后台系统同一时间只会加载一个子应用的运行时。但是也存在这样的场景，某一个子应用聚合了多个业务域，这样的子应用往往会经历多个团队的多个同学共同维护自己的业务模块，这时候便可以采用多实例的模式聚合子模块（这种模式也可以叫微前端模块）。
+在 qiankun ProxySandbox 用于多实例场景。什么是多实例场景，这里简单提下，一般我们的中后台系统同一时间只会加载一个子应用的运行时。但是也存在这样的场景，某一个子应用聚合了多个业务域，这样的子应用往往会经历多个团队的多个同学共同维护自己的业务模块，这时候便可以采用多实例的模式聚合子模块（这种模式也可以叫微前端模块）。
 
 和 legacySandBox 最直接的不同点就是，为了支持多实例的场景，proxySandBox 不会直接操作 window 对象。并且为了避免子应用操作或者修改主应用上诸如 window、document、location 这些重要的属性，会遍历这些属性到子应用 window 副本（fakeWindow）上
 ![multi-instance](../assest/multi-instance.png)
