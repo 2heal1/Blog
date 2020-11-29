@@ -10,7 +10,7 @@ qiankun 就做了这样的事，qiankun 是阿里团队基于 single-spa、impor
 
 先上一张特性图
 ![qiankun-feture](../assest/qiankun-feture.png)
-可以看到，qiankun 特性有许多，本文就对我个人感兴趣的 _HTML Entry 接入方式_ _样式隔离_ _JS 沙箱_ _资源预加载_,这 4 个特性进行分析
+可以看到，qiankun 特性有许多，本文就对我个人感兴趣的 _HTML Entry 接入方式_ _样式隔离_ _JS 沙箱_ ,这 3 个特性进行分析
 
 ## HTML Entry 接入方式
 
@@ -229,47 +229,88 @@ qiankun 是从 window.Proxy 的 set 和 get 属性来实现沙箱运行环境。
   }
 ```
 
-### ProxySandbox
+其中还有 ProxySandbox、SnapshotSandbox，原理都差不多，其中 SnapshotSandbox 主要是兼容没有 Proxy 的情况。
+下面看下如何挂载沙箱
 
-在 qiankun ProxySandbox 用于多实例场景。什么是多实例场景，这里简单提下，一般我们的中后台系统同一时间只会加载一个子应用的运行时。但是也存在这样的场景，某一个子应用聚合了多个业务域，这样的子应用往往会经历多个团队的多个同学共同维护自己的业务模块，这时候便可以采用多实例的模式聚合子模块（这种模式也可以叫微前端模块）。
+### mountSandBox
 
-和 legacySandBox 最直接的不同点就是，为了支持多实例的场景，proxySandBox 不会直接操作 window 对象。并且为了避免子应用操作或者修改主应用上诸如 window、document、location 这些重要的属性，会遍历这些属性到子应用 window 副本（fakeWindow）上
-![multi-instance](../assest/multi-instance.png)
-
-先看下 ProxySandbox 结构
+在创建沙箱时候，不仅返回了沙箱，还会返回 _mount_ 和 *unmount*方法
+首先，在 mount 内部先激活了子应用沙箱，在沙箱启动后开始劫持各类全局监听，我们这里重点看看 patchAtMounting 内部是怎么实现的。
 
 ```js
+sandbox.active();
 
-export default class ProxySandbox implements SandBox {
-  /** window 值变更记录 */
-  // 记录沙箱中更新的值，也就是每个子应用中独立的状态池
-  private updatedValueSet = new Set<PropertyKey>();
+const sideEffectsRebuildersAtBootstrapping = sideEffectsRebuilders.slice(
+  0,
+  bootstrappingFreers.length
+);
+const sideEffectsRebuildersAtMounting = sideEffectsRebuilders.slice(
+  bootstrappingFreers.length
+);
 
-  name: string;
+if (sideEffectsRebuildersAtBootstrapping.length) {
+  sideEffectsRebuildersAtBootstrapping.forEach(rebuild => rebuild());
+}
+// 劫持各类全局监听，并返回相应的free方法
+mountingFreers = patchAtMounting(
+  appName,
+  elementGetter,
+  sandbox,
+  scopedCSS,
+  excludeAssetFilter
+);
 
-  type: SandBoxType;
-  // 代理对象，可以理解为子应用的 global/window 对象
-  proxy: WindowProxy;
-  // 当前沙箱是否在运行中
-  sandboxRunning = true;
-  // 最近设置的PropertyKey
-  latestSetProp: PropertyKey | null = null;
-  // 激活沙箱，在子应用挂载时启动
-  active() {
-  }
-  // 关闭沙箱，在子应用卸载时启动
-  inactive() {
-  }
+if (sideEffectsRebuildersAtMounting.length) {
+  sideEffectsRebuildersAtMounting.forEach(rebuild => rebuild());
+}
 
-  constructor(name: string) {
-  }
+sideEffectsRebuilders = [];
+```
+
+_patchAtMounting_ 内部调用了下面四个函数：
+
+- patchTimer（计时器劫持）
+- patchWindowListener（window 事件监听劫持）
+- patchHistoryListener（window.history 事件监听劫持）
+- patchDynamicAppend（动态添加 Head 元素事件劫持）
+
+上面四个函数实现了对 _window_ 指定对象的统一劫持，我们可以挑一些解析看看其内部实现。
+
+#### 计时器劫持 - patchTimer
+
+我们先来看看 patchTimer 对计时器的劫持
+
+```js
+export default function patch(global: Window) {
+  let intervals: number[] = [];
+
+  global.clearInterval = (intervalId: number) => {
+    intervals = intervals.filter(id => id !== intervalId);
+    // 在intervals池找到对应的intervalid，进行清除定时操作
+    return rawWindowClearInterval(intervalId);
+  };
+
+  global.setInterval = (
+    handler: Function,
+    timeout?: number,
+    ...args: any[]
+  ) => {
+    // 收集intervalId
+    const intervalId = rawWindowInterval(handler, timeout, ...args);
+    intervals = [...intervals, intervalId];
+    return intervalId;
+  };
+
+  return function free() {
+    intervals.forEach(id => global.clearInterval(id));
+    global.setInterval = rawWindowInterval;
+    global.clearInterval = rawWindowClearInterval;
+
+    return noop;
+  };
 }
 ```
 
-然后看下 ProxySandbox 是如何实现沙箱运行环境
+从上图可以看出，patchTimer 内部将 setInterval 进行重载，将每个启用的定时器的 intervalId 都收集起来，以便在子应用卸载时调用 free 函数将计时器全部清除
 
-todo
-
-## 资源预加载
-
-todo
+todo patchDynamicAppend
