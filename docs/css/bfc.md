@@ -1,5 +1,5 @@
 ---
-title: BFC（Block Formatting Contex） 格式化上下文
+title: BFC
 ---
 
 # 前置
@@ -52,7 +52,7 @@ BFC（Block Formatting Context）格式化上下文，是 Web 页面中盒模型
 
 # 形成条件
 
-- 根元素（<html>）
+- 根元素（html）
 - 浮动元素（元素的 float 不是 none）
 - 绝对定位元素（元素的 position 为 absolute 或 fixed）
 - 行内块元素（元素的 display 为 inline-block）

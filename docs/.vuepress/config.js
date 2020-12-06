@@ -6,12 +6,6 @@ module.exports = {
     sidebar: [
       ["/about", "介绍"],
       {
-        title: "css",
-        path: "/css/",
-        collapsable: false,
-        children: ["/css/bfc"]
-      },
-      {
         title: "工作",
         path: "/work/",
         collapsable: false,
@@ -21,6 +15,12 @@ module.exports = {
           "/work/single-spa",
           "/work/qiankun特性源码分析"
         ]
+      },
+      {
+        title: "css",
+        path: "/css/",
+        collapsable: false,
+        children: ["/css/bfc"]
       },
       {
         title: "LeetCode题解",
