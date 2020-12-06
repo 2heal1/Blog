@@ -6,6 +6,12 @@ module.exports = {
     sidebar: [
       ["/about", "介绍"],
       {
+        title: "css",
+        path: "/css/",
+        collapsable: false,
+        children: ["/css/bfc"]
+      },
+      {
         title: "工作",
         path: "/work/",
         collapsable: false,
@@ -165,8 +171,8 @@ module.exports = {
     ]
   },
   plugins: {
-    'sitemap': {
-        hostname: 'https://2heal1.github.io'
-    },
-}
+    sitemap: {
+      hostname: "https://2heal1.github.io"
+    }
+  }
 };
