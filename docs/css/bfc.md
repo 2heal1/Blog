@@ -75,7 +75,7 @@ BFC（Block Formatting Context）格式化上下文，是 Web 页面中盒模型
 - 计算 BFC 的高度时，浮动元素也参与计算
 - BFC 就是页面上的一个独立容器，容器里面的字元素不会影响外面的元素
 
-# 例子
+# 🌰
 
 ## 边距折叠
 
@@ -157,6 +157,7 @@ BFC（Block Formatting Context）格式化上下文，是 Web 页面中盒模型
       <div class="box4">box4</div>
     </div>
  // css
+ .container {
   width: 200px;
   top: 50%;
   background: #e0e0e0;
