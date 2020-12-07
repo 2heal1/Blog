@@ -41,3 +41,6 @@ section.example{
 ![markdown_3](../assest/markdown_3.png)
 
 还可以设置主题、图片排版等，具体看[官方文档](https://marpit.marp.app/)
+
+# 导出
+点击右上角logo 点击Export slide deck... ，然后选择导出的格式和路径，至此，一份ppt就生成了！
