@@ -13,7 +13,8 @@ module.exports = {
           "/work/入职",
           "/work/nest里的单元测试",
           "/work/single-spa",
-          "/work/qiankun特性源码分析"
+          "/work/qiankun特性源码分析",
+          "/work/markdown转ppt"
         ]
       },
       {
