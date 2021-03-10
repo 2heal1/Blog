@@ -18,6 +18,15 @@ module.exports = {
         ]
       },
       {
+        title: "工具",
+        path: "/tools/",
+        collapsable: false,
+        children: [
+          "/tools/约定式路由插件",
+          "/tools/组件替换工具"
+        ]
+      },
+      {
         title: "css",
         path: "/css/",
         collapsable: false,
